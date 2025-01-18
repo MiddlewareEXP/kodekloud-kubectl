@@ -1,0 +1,207 @@
+4  kubectl get pods
+    5  clear
+    6  kubectl get rs
+    7  kubectl get deployements
+    8  kubectl get deployments
+    9  kubectl get rs
+   10  history
+   11  clear
+   12  kubectl get rs
+   13  docker pull nginx
+   14  docker images
+   15  kubectl run nginx --image=nginx
+   16  kubectl get pods
+   17  kubectl describe pod nginx
+   18  kubectl get pods -o wide
+   19  kubeclt get pods
+   20  clear
+   21  kubectl get pods
+   22  docker pull tensorflow/tensorflow
+   23  docker images
+   24  kubectl run pod --image=tensorflow/tensorflow
+   25  docker get pods
+   26  kubectl ger pods
+   27  cleaer
+   28  clear
+   29  kubeclt get pods
+   30  kubectl get pods
+   31  kubectl describe pod pod
+   32  clear
+   33  kubectl delete pod pod
+   34  kubectl get pods
+   35  docker images
+   36  kubectl images
+   37  kubectl run tensorflow --image=tensorflow/tensorflow
+   38  kubectl get pods
+   39  kubectl describe tensorflow
+   40  kubectl describe pod tensorflow
+   41  kubectl delete pod tensorflow
+   42  kubectl get pods
+   43  clear
+   44  docker images
+   45  docker rmi tensorflow/tensorflow
+   46  docker images
+   47  docker pull redis
+   48  clear
+   49  docker imahes
+   50  docker images
+   51  kubectl run redis --image=redis --dry-run=client -o yaml
+   52  kubectl run redis --image=redis --dry-run=client -o yaml > redis.yaml
+   53  ls
+   54  cat redis.yaml 
+   55  kubectl get pods
+   56  kubectl create -f redis.yaml 
+   57  kubectl get pods
+   58  clear
+   59  kubectl get pods
+   60  ls
+   61  nano redis.yaml 
+   62  kubectl delete pod redis
+   63  kubectl get pods
+   64  ls
+   65  nano redis.yaml 
+   66  kubectl run redis --image=redis
+   67  kubectl get pods
+   68  kubectl delete pod redis
+   69  kubectl get pods
+   70  ls
+   71  history
+   72  kubectl create -f redis.yaml 
+   73  kubectl get pods
+   74  kubectl describe pod redis
+   75  vi redis.yaml 
+   76  nano redis.yaml 
+   77  ls
+   78  nano redis.yaml 
+   79  kubectl apply -f redis.yaml 
+   80  kubectl get pods
+   81  clear
+   82  history
+
+------------------------------------------------------
+nginx.yaml
+-----------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-2
+  labels:
+    env: development
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+
+rc-definition.yaml
+--------------------
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myapp-rc
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+  replicas: 3
+
+replicaset-definition.yaml
+--------------------
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: front-end
+
+spec:
+  template:
+
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+
+  replicas: 3
+  selector: 
+    matchLabels:
+      type: front-end
+
+    4  nano nginx.yaml
+    5  docker pull nginx
+    6  ls 'ltr
+    7  ;
+    8  ccccc
+    9  ''''
+   10  clear
+   11  docker images
+   12  ls
+   13  cat nginx.yaml 
+   14  kubectl apply -f nginx.yaml 
+   15  l get pods
+   16  k get pods
+   17  k describe pod nginx-2
+   18  clear
+   19  nano rc-definition.yml
+   20  ls
+   21  cat rc-definition.yml 
+   22  cat nginx.yaml 
+   23  clear
+   24  kubectl create -f rc-definition.yml 
+   25  mv rc-definition.yml rc-definition.yaml 
+   26  ls
+   27  k create -f rc-definition.yaml 
+   28  cat rc-definition.yaml 
+   29  clear
+   30  cat rc-definition.yaml 
+   31  kubectl create -f rc-definition.yaml 
+   32  ls
+   33  kubectl create -f rc-definition.yaml
+   34  k get pods
+   35  cat rc-definition.yaml 
+   36  clear
+   37  kubectl get replicationcontroller
+   38  kubectl get pods
+   39  nano replicaset-definition.yml
+   40  cat replicaset-definition.yml 
+   41  nano replicaset-definition.yml 
+   42  cat replicaset-definition.yml 
+   43  clear
+   44  ls
+   45  kubectl apply -f replicaset-definition.yml 
+   46  nano replicaset-definition.yml 
+   47  cat replicaset-definition.yml 
+   48  k apply -f replicaset-definition.yml 
+   49  kubectl get replicaset
+   50  nano replicaset-definition.yml 
+   51  k replace -f replicaset-definition.yml 
+   52  nano replicaset-definition.yml 
+   53  k replace -f replicaset-definition.yml 
+   54  kubectl scale --replicas=6 -f replicaset-definition.yml 
+   55  k get pods
+   56  k scale --replicas=7 replicaset myapp-replicaset
+   57  k get pods
+   58  clar
+   59  clear
+   60  history
+--------------------------------------------------------------------
+
+
+
+
+
